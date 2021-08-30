@@ -1,5 +1,5 @@
 # Help needed for the next release
-If something doesn't work for you or you want to help create another improved release of this library, please give feedback here: [discussion: concept for release 3.0.0](https://github.com/michal037/driver-ST7735S/discussions/8)
+If something doesn't work for you or you want to help create another improved release of this library, please give feedback here: [discussion: concept for new release](https://github.com/michal037/driver-ST7735S/discussions/8)
 
 ---
 
