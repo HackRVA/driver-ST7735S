@@ -1,0 +1,60 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "BuildAndRun",
+            "type": "shell",
+            "command": "./tools/BuildAndRun.ps1",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "CopySource"
+            ],
+            "options": {
+                "shell": {
+                    "executable": "pwsh"
+                }
+            },
+            "presentation": {
+                "showReuseMessage": true
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "CopySource",
+            "type": "shell",
+            "command": "./tools/CopySource.ps1",
+            "options": {
+                "shell": {
+                    "executable": "pwsh"
+                }
+            },
+            "presentation": {
+                "showReuseMessage": false,
+                "clear": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Shutdown",
+            "type": "shell",
+            "command": "ssh pi sudo shutdown now",
+            "options": {
+                "shell": {
+                    "executable": "pwsh",
+                    "args": ["-Command"]
+                }
+            },
+            "presentation": {
+                "showReuseMessage": true,
+                "clear": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}
