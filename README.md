@@ -12,7 +12,7 @@ The library implementation is based on the 4-line SPI. With little effort, you c
 
 * The documentation was written in the header file: [st7735s.h][st7735s_h]
 * Implementation details can be read in the file: [st7735s.c][st7735s_c]
-* Usage guide is based on the Wiring Pi library: [main_example_wpi.c]
+* Usage guide is based on the Wiring Pi library: [main_example_wpi.c][main_example_wpi_c]
 * Datasheet: [st7735s-datasheet-v1.4.pdf][datasheet_file]
 
 ## License
