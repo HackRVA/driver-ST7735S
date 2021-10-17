@@ -76,8 +76,14 @@ lcd_ptr_t lcd_createSettings(
     settings->dataMode_activeState = DATAMODE_ACTIVESTATE;
     settings->reset_activeState    = RESET_ACTIVESTATE;
 
+    /* HAVE TO BE REFRESHED IN INITIALIZATION TO PREVENT BUGS!
+     * Use: lcd_setMemoryAccessControl()
+     */
     settings->flag_madctl_mv = FLAG_MADCTL_MV_DEFAULT;
 
+    /* HAVE TO BE REFRESHED IN INITIALIZATION TO PREVENT BUGS!
+     * Use: lcd_setInterfacePixelFormat()
+     */
     settings->interface_pixel_format = INTERFACE_PIXEL_FORMAT_DEFAULT;
 
     return settings;
@@ -806,8 +812,8 @@ lcd_status_t lcd_clearScreen(
 
 lcd_status_t lcd_framebuffer_send(
     unsigned char* buffer,
-    const size_t length_buffer,
-    const size_t length_chunk
+    const size_t   length_buffer,
+    const size_t   length_chunk
 ) {
     unsigned int i;
     unsigned int chunk_amount;

@@ -205,6 +205,9 @@ void lcd_spiWrite(unsigned char* buffer, size_t length);
 /* Description:
  *   Create new display settings. This function allocates memory.
  *
+ *   WARNING: lcd_setMemoryAccessControl() and lcd_setInterfacePixelFormat()
+ *   HAVE TO BE REFRESHED IN INITIALIZATION TO PREVENT BUGS!
+ *
  * Parameters:
  * - width: display width in pixels
  * - height: display height in pixels
@@ -466,6 +469,8 @@ lcd_status_t lcd_setTearingEffectLine(unsigned char tearing);
  *   You can combine flags together using the addition operator '+'
  *   or bitwise inclusive OR '|'.
  *
+ *   WARNING: HAVE TO BE REFRESHED IN INITIALIZATION TO PREVENT BUGS!
+ *
  * Parameters:
  * - flags: The flags to be set. Prepared definitions:
  *   LCD_MADCTL_MY  (1<<7) Row Address Order
@@ -484,6 +489,8 @@ lcd_status_t lcd_setMemoryAccessControl(unsigned char flags);
 /* Description:
  *   Set the way pixel data are sent to the display driver.
  *   Arguments cannot be combined together.
+ *
+ *   WARNING: HAVE TO BE REFRESHED IN INITIALIZATION TO PREVENT BUGS!
  *
  * Parameters:
  * - format: Interface Pixel Format. Prepared definitions:
@@ -800,8 +807,8 @@ lcd_status_t lcd_clearScreen(
  */
 lcd_status_t lcd_framebuffer_send(
     unsigned char* buffer,
-    const size_t length_buffer,
-    const size_t length_chunk
+    const size_t   length_buffer,
+    const size_t   length_chunk
 );
 
 #ifdef __cplusplus

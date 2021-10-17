@@ -155,10 +155,12 @@ int main(void) {
 
     /* To start drawing, you HAVE TO:
      * step 1: turn off sleep mode
-     * step 2: turn on the display
+     * step 2: set Memory Access Control  - required by lcd_createSettings()
+     * step 3: set Interface Pixel Format - required by lcd_createSettings()
+     * step 4: turn on the display
      * After that, you can draw.
      *
-     * It is best to make the optional settings between steps 1 and 2.
+     * It is best to make the optional settings between steps 1 and 4.
      */
 
     /* turn off sleep mode; required to draw */
@@ -166,12 +168,12 @@ int main(void) {
         fail_handler();
     }
 
-    /* set Memory Access Control; optional reset */
+    /* set Memory Access Control; refresh - required by lcd_createSettings() */
     if(lcd_setMemoryAccessControl(LCD_MADCTL_DEFAULT) < LCD_OK) {
         fail_handler();
     }
 
-    /* set Interface Pixel Format; optional reset */
+    /* set Interface Pixel Format; refresh - required by lcd_createSettings() */
     if(lcd_setInterfacePixelFormat(LCD_PIXEL_FORMAT_666) < LCD_OK) {
         fail_handler();
     }

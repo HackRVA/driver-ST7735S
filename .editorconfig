@@ -12,6 +12,6 @@ trim_trailing_whitespace = true
 [makefile]
 indent_style = tab
 
-[*.{c,h,ps1,js}]
+[*.{c,h,ps1,json}]
 indent_style = space
 indent_size = 4
