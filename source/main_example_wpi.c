@@ -287,10 +287,10 @@ lcd_status_t demo() {
     }
 
     /* draw */
-    for(i = 128; i < 512; i++) {
+    for(i = 128; i < 1024; i++) {
         /* create palette */
         for(p = 0; p < 256; p++) {
-            palette[p].red   = (i - 128) / 1.8;
+            palette[p].red   = ((i % 512) - 128) / 1.8;
             palette[p].green = 128 + 127 * sin((3.14159 * p /  64.0) + 1);
             palette[p].blue  = 128 + 127 * sin((3.14159 * p / 128.0) + 1);
         }
@@ -300,9 +300,9 @@ lcd_status_t demo() {
             for(y = 0; y < height; y++) {
                 formula = 128 + 127 * sin(
                     3.14159 *
-                    (x - width  / (2 + 2 * sin(3.14159 * (i - 128) / 384))) *
-                    (y - height / (2 + 2 * sin(3.14159 * (i - 128) / 384))) /
-                    (i * 10.0)
+                    (x - width  / (2 + 2 * sin(3.14159 * ((i % 512) - 128) / 384))) *
+                    (y - height / (2 + 2 * sin(3.14159 * ((i % 512) - 128) / 384))) /
+                    ((i % 512) * 10.0)
                 );
 
                 /* calculate pixel address */
