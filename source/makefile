@@ -109,8 +109,8 @@ main_example_wpi.o: main_example_wpi.c st7735s.h
 	$(CC) $(CFLAGS) -c -o main_example_wpi.o main_example_wpi.c
 
 # The result of this target is a program called 'example_wpi'.
-# For a custom WiringPi library location, read the WiringPi reference.
-# WiringPi reference: http://wiringpi.com/reference/
+# For a custom Wiring Pi library location, read the Wiring Pi reference.
+# Wiring Pi reference: http://wiringpi.com/reference/
 example_wpi: st7735s.o main_example_wpi.o
 	$(CC) $(CFLAGS) -lwiringPi -lm -o example_wpi main_example_wpi.o st7735s.o
 

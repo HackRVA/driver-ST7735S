@@ -17,7 +17,7 @@
 /* SPI buffer size of Wiring Pi; http://wiringpi.com/reference/spi-library/ */
 #define WPI_SPI_BUFFER_SIZE  4096 /* x * 1024 */
 #define WPI_SPI_CHANNEL         0
-#define PIN_COMMUNICATION_MODE  9 /* WiringPi pin numbering */
+#define PIN_COMMUNICATION_MODE  9 /* Wiring Pi pin numbering */
 #define PIN_RESET               8
 #define PIN_CHIP_SELECT        10
 
@@ -129,7 +129,7 @@ int main(void) {
         160, /* height */
         0,   /* width_offset */
         0,   /* height_offset */
-        PIN_COMMUNICATION_MODE, /* WiringPi pin numbering */
+        PIN_COMMUNICATION_MODE, /* Wiring Pi pin numbering */
         PIN_RESET
     );
 
