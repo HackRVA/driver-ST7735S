@@ -26,7 +26,7 @@ The library implementation is based on the 4-line SPI. With little effort, you c
 This software is licensed under the MIT License. See the [license file][license_file] for details.
 
 [display_png]:  documentation/notes/display.png
-[demo_video]: https://www.youtube.com/watch?v=cutf6YrBpvs
+[demo_video]: https://www.youtube.com/watch?v=2PtDBSYxbV0
 [architecture_image]: documentation/notes/architecture/architecture.png
 [datasheet_file]: documentation/datasheet/st7735s-datasheet-v1.4.pdf
 [st7735s_h]: source/st7735s.h
