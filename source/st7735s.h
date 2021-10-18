@@ -806,9 +806,9 @@ lcd_status_t lcd_clearScreen(
  *   status code indicating success or failure
  */
 lcd_status_t lcd_framebuffer_send(
-    unsigned char* buffer,
-    const size_t   length_buffer,
-    const size_t   length_chunk
+    unsigned char * buffer,
+    const    size_t length_buffer,
+    const    size_t length_chunk
 );
 
 #ifdef __cplusplus

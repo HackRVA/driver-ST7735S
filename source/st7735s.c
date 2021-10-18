@@ -811,9 +811,9 @@ lcd_status_t lcd_clearScreen(
 }
 
 lcd_status_t lcd_framebuffer_send(
-    unsigned char* buffer,
-    const size_t   length_buffer,
-    const size_t   length_chunk
+    unsigned char * buffer,
+    const    size_t length_buffer,
+    const    size_t length_chunk
 ) {
     unsigned int i;
     unsigned int chunk_amount;
