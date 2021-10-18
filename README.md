@@ -2,6 +2,12 @@
 
 MCU independent library for the ST7735S display driver.
 
+## Demonstration
+
+[![demonstration][display_png]][demo_video]
+
+Click on the picture to view the video.
+
 ## Architecture
 
 ![library architecture][architecture_image]
@@ -19,6 +25,8 @@ The library implementation is based on the 4-line SPI. With little effort, you c
 
 This software is licensed under the MIT License. See the [license file][license_file] for details.
 
+[display_png]:  documentation/notes/display.png
+[demo_video]: https://www.youtube.com/watch?v=cutf6YrBpvs
 [architecture_image]: documentation/notes/architecture/architecture.png
 [datasheet_file]: documentation/datasheet/st7735s-datasheet-v1.4.pdf
 [st7735s_h]: source/st7735s.h
