@@ -1,4 +1,4 @@
-# Windows 10; PowerShell 7.1.4
+# Windows 10; PowerShell 7
 # Build and run the example program
 
 # 'pi' is HOST to which the files are sent

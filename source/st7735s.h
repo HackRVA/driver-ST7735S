@@ -12,9 +12,7 @@
  * Convention example: (pdf v1.4 p10) or (pdf v1.4 p68-70)
  */
 
-/* #### REFERENCE ####
- *   size_t: https://stackoverflow.com/a/131833
- */
+/* about size_t: https://stackoverflow.com/a/131833 */
 
 /* from stdlib.h: size_t, malloc, free */
 #include <stdlib.h>
@@ -36,7 +34,7 @@ extern "C" {
 #define LCD_IDLE_ON  1 /* (true)  turn on idle mode */
 #define LCD_IDLE_OFF 0 /* (false) turn off idle mode */
 
-#define LCD_INVERSION_ON  1 /* (true) turn on inversion */
+#define LCD_INVERSION_ON  1 /* (true)  turn on inversion */
 #define LCD_INVERSION_OFF 0 /* (false) turn off inversion */
 
 /* flags for lcd_setMemoryAccessControl(); see (pdf v1.4 p142)

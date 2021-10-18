@@ -1,6 +1,7 @@
-# Windows 10; PowerShell 7.1.4
+# Windows 10; PowerShell 7
 # Copy the source files to the destination
 
+# 'pi' is HOST to which the files are sent
 scp `
     source/makefile `
     source/st7735s.h `

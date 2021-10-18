@@ -30,9 +30,9 @@ void test(unsigned char red, unsigned char green, unsigned char blue) {
 }
 
 int main() {
-    test(255, 0, 0); /* red */
-    test(0, 255, 0); /* green */
-    test(0, 0, 255); /* blue */
+    test(255,   0,   0); /* red */
+    test(  0, 255,   0); /* green */
+    test(  0,   0, 255); /* blue */
     printf("\n");
 
     /* red */

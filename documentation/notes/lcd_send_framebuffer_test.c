@@ -1,3 +1,10 @@
+/* MIT License
+ * Copyright (c) 2021, Michal Kozakiewicz, github.com/michal037
+ *
+ * code repository: https://github.com/michal037/driver-ST7735S
+ * code version: 3.0.0
+ */
+
 #include <stdio.h>
 
 typedef enum lcd_status_t {
@@ -5,17 +12,15 @@ typedef enum lcd_status_t {
     LCD_OK   =  0
 } lcd_status_t;
 
-lcd_status_t lcd_writeData(unsigned char* a, size_t b) {
-    printf("address: %p, amount: %d\n", a, (unsigned int)b);
+lcd_status_t lcd_writeData(unsigned char* buffer, size_t length) {
+    printf("address: %p, amount: %d\n", buffer, (unsigned int)length);
     return LCD_OK;
 }
 
-/* ########## ########## ########## ########## */
-
-lcd_status_t lcd_send_framebuffer(
-    unsigned char* buffer,
-    const size_t length_buffer,
-    const size_t length_chunk
+lcd_status_t lcd_framebuffer_send(
+    unsigned char * buffer,
+    const    size_t length_buffer,
+    const    size_t length_chunk
 ) {
     unsigned int i;
     unsigned int chunk_amount;
@@ -62,16 +67,14 @@ lcd_status_t lcd_send_framebuffer(
     return LCD_OK;
 }
 
-/* ########## ########## ########## ########## */
-
 int main() {
     const size_t length_chunk = 4;
     unsigned char *ptr = (unsigned char*)0x10;
     size_t i;
 
     for(i = 0; i <= 10; i++) {
-        printf("length_buffer: %lu \n", i);
-        lcd_send_framebuffer(ptr, i, length_chunk);
+        printf("length_buffer: %lu\n", i);
+        lcd_framebuffer_send(ptr, i, length_chunk);
         printf("\n");
     }
 
