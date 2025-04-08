@@ -47,6 +47,12 @@
 #define LCD_CMD_IDMON   0x39 /* Idle Mode On (pdf v1.4 p148) */
 #define LCD_CMD_COLMOD  0x3A /* Interface Pixel Format (pdf v1.4 p150) */
 
+/* ST7735S Panel Function Commands (pdf v1.1 p6) */
+#define LCD_CMD_FRMCTR1 0xB1 /* Frame Control (In normal mode/ Full colors) (pdf v1.1 p159) */
+#define LCD_CMD_FRMCTR2 0xB2 /* Frame Control (In Idle mode/ 8-colors) (pdf v1.1 p160) */
+#define LCD_CMD_FRMCTR3 0xB3 /* Frame Control (In Partial mode/ full colors) (pdf v1.1 p161) */
+#define LCD_CMD_INVCTR  0xB4 /* Display Inversion Control (pdf v1.1 p162 */
+
 /* global variable with settings of the active display module */
 lcd_ptr_t lcd_settings = NULL;
 
@@ -398,6 +404,75 @@ lcd_status_t lcd_setInterfacePixelFormat(unsigned char format) {
 
     /* save interface pixel format for drawing functions */
     lcd_settings->interface_pixel_format = format;
+
+    return LCD_OK;
+}
+
+lcd_status_t lcd_setFrameControl(
+    unsigned char abcd_flags,
+    unsigned char rtn,
+    unsigned char fp,
+    unsigned char bp
+) {
+    /* rtn is a 4-bit field (pdf v1.1 p159-161) */
+    if (rtn > 0xf) {
+        return LCD_FAIL;
+    }
+
+    /* fp is a 6-bit field (pdf v1.1 p159-161) */
+    if (fp > 0x3f) {
+        return LCD_FAIL;
+    }
+
+    /* bp is a 6-bit field (pdf v1.1 p159-161) */
+    if (bp > 0x3f) {
+        return LCD_FAIL;
+    }
+
+    /* Build command payload data (pdf v1.1 p159-161) */
+    unsigned char data[3];
+    data[0] = rtn;
+    data[1] = fp;
+    data[2] = bp;
+
+    for (int i = 0; i < 3; i++) {
+        /* Only send requested commands. */
+        if (0 == (abcd_flags & (1U << i))) {
+            continue;
+        }
+
+        /* Calculate command from index. */
+        unsigned char cmd = LCD_CMD_FRMCTR1 + i;
+
+        if (lcd_writeCommandByte(cmd) < LCD_OK) {
+            return LCD_FAIL;
+        }
+
+        /* Write payload twice for LCD_CMD_FRMCTR3. (pdf v1.1 p161) */
+        for (int j = 0; j < (LCD_CMD_FRMCTR3 == cmd ? 2 : 1); j++) {
+            if (lcd_writeData(data, sizeof(data)) < LCD_OK) {
+                return LCD_FAIL;
+            }
+        }
+    }
+
+    return LCD_OK;
+}
+
+lcd_status_t lcd_setDisplayInversionControl(unsigned char flags)
+{
+    /* This is a 3-bit register (pdf v1.1 p162) */
+    if (flags > 0x7) {
+        return LCD_FAIL;
+    }
+
+    if (lcd_writeCommandByte(LCD_CMD_INVCTR) < LCD_OK) {
+        return LCD_FAIL;
+    }
+
+    if (lcd_writeData(&flags, sizeof(flags)) < LCD_OK) {
+        return LCD_FAIL;
+    }
 
     return LCD_OK;
 }

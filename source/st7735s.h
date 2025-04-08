@@ -501,6 +501,56 @@ lcd_status_t lcd_setMemoryAccessControl(unsigned char flags);
  */
 lcd_status_t lcd_setInterfacePixelFormat(unsigned char format);
 
+#define LCD_FRMCTR_A    (1U << 0)
+#define LCD_FRMCTR_B    (1U << 1)
+#define LCD_FRMCTR_CD   (1U << 2)
+
+/* Description:
+ *   Set the frame control registers.
+ *
+ * Parameters:
+ * - abcd_flags: Which of the three registers to set. Prepared definitions:
+ *   LCD_FRMCTR_A - In normal mode/ Full colors
+ *   LCD_FRMCTR_B - In Idle mode/ 8-colors
+ *   LCD_FRMCTR_CD - In Partial mode/ Full colors
+ * - rtn
+ * - fp
+ * - bp
+ *
+ * Returns:
+ *   status code indicating success or failure
+ */
+lcd_status_t lcd_setFrameControl(
+    unsigned char abcd_flags,
+    unsigned char rtn,
+    unsigned char fp,
+    unsigned char bp
+);
+
+#define LCD_INVCTR_NLA_DOT (0U << 0)
+#define LCD_INVCTR_NLA_COL (1U << 0)
+#define LCD_INVCTR_NLB_DOT (0U << 1)
+#define LCD_INVCTR_NLB_COL (1U << 1)
+#define LCD_INVCTR_NLC_DOT (0U << 2)
+#define LCD_INVCTR_NLC_COL (1U << 2)
+
+/* Description:
+ *   Set the inversion control register.
+ *
+ * Parameters:
+ * - flags: flags to set in the INVCTR register. Prepared definitions:
+ *   LCD_INVCTR_NLA_DOT - Dot inversion in full Colors normal mode
+ *   LCD_INVCTR_NLA_COL - Column inversion in full Colors normal mode
+ *   LCD_INVCTR_NLB_DOT - Dot inversion in Idle mode
+ *   LCD_INVCTR_NLB_COL - Column inversion Idle mode
+ *   LCD_INVCTR_NLC_DOT - Dot inversion in full Colors partial mode
+ *   LCD_INVCTR_NLC_COL - Column inversion in full Colors partial mode
+ *
+ * Returns:
+ *   status code indicating success or failure
+ */
+lcd_status_t lcd_setDisplayInversionControl(unsigned char flags);
+
 /* Description:
  *   Set the window where you will draw. After setting the window, you can
  *   enable memory write and start sending data to the display driver.
